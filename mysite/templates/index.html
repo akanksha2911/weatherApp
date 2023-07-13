@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Weather Update</title>
+    <style>
+      ul {
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/"> Weather Update</a>
+      
+    
+    </nav>
+      <br />
+      
+      <div class="container text-center my-4">
+        <h1> Enter location</h1>
+        <br />
+        <form method="post" action="/">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="number" class="form-control" name="latitude" step="0.000001" placeholder="Enter latitude">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" step="0.000001" placeholder="Enter longitude" name="longitude">
+          </div>
+          <!--
+          <div class="form-group">
+            <label>Example multiple select</label>
+            <select multiple class="form-control" id="exampleFormControlSelect2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        -->
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      {% if info %}
+        <div class="container text-center">
+          <div class="col-md-6 col-md-offset-3">
+            <h3>Current Weather  : {{weather_data.main}}</h1>
+              <h5>Description : {{weather_data.description}}</h5>
+              <h5>temperature : {{info.main.temp}}</h5>
+              <h5>pressure : {{info.main.pressure}} </h5>
+              <h5>humidity : {{info.main.humidity}}</h5>
+          </div>
+      
+      {% endif %}
+      {% comment %} <div class="row">
+        
+        <div class="col-md-6 col-md-offset-3">
+          <h3>country code : {{weather.country_code}}</h1>
+            <h5>coordinate : {{weather.coordinate}}</h5>
+            <h5>temp : {{weather.temp}}</h5>
+            <h5>pressure : {{weather.pressure}} </h5>
+            <h5>humidity : {{weather.humidity}}</h5>
+        </div> {% endcomment %}
+        
+      </div>
+    
+    
+  
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
